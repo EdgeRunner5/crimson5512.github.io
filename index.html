@@ -33,15 +33,17 @@
     <input
         type="text"
         id="searchBar"
+        placeholder="Search SFX..."
         onkeyup="searchPage()"
-        placeholder="Search abilities or SFX..."
         style="
-            width: 300px;
-            padding: 10px;
-            font-size: 16px;
-            border-radius: 8px;
-            border: none;
-            outline: none;
+            width:350px;
+            padding:10px;
+            border:none;
+            border-radius:8px;
+            background:#2a2a2a;
+            color:white;
+            font-size:16px;
+            outline:none;
         ">
 </div>
 
@@ -160,25 +162,30 @@
         <p>for other stuff</p>
     </div>
 
-    <script>
-        function openPage(pageId, element) {
-            // Hide all pages
-            document.querySelectorAll(".page").forEach(page => {
-                page.classList.remove("active");
-            });
+<script>
+function openPage(pageId, element) {
+    document.querySelectorAll(".page").forEach(page => {
+        page.classList.remove("active");
+    });
 
-            // Remove active tab
-            document.querySelectorAll(".tab").forEach(tab => {
-                tab.classList.remove("active");
-            });
+    document.querySelectorAll(".tab").forEach(tab => {
+        tab.classList.remove("active");
+    });
 
-            // Show selected page
-            document.getElementById(pageId).classList.add("active");
+    document.getElementById(pageId).classList.add("active");
+    element.classList.add("active");
+}
 
-            // Highlight selected tab
-            element.classList.add("active");
-        }
-    </script>
+function searchPage() {
+    const input = document.getElementById("searchBar").value.toLowerCase();
+
+    document.querySelectorAll("#main h1, #main h2, #main p").forEach(item => {
+        const text = item.textContent.toLowerCase();
+
+        item.style.display = text.includes(input) || input === "" ? "" : "none";
+    });
+}
+</script>
 
 </body>
 </html>
