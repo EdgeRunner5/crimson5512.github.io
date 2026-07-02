@@ -2,10 +2,97 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My GitHub Website</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #1a1a1a;
+            color: white;
+        }
+
+        /* Top title */
+        .logo {
+            font-size: 32px;
+            font-weight: bold;
+            padding: 20px;
+            text-align: center;
+            background: #111;
+        }
+
+        /* Navigation */
+        .navbar {
+            display: flex;
+            justify-content: center;
+            background: #222;
+        }
+
+        .tab {
+            padding: 15px 30px;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .tab:hover {
+            background: #333;
+        }
+
+        .tab.active {
+            background: #4a6cff;
+        }
+
+        /* Pages */
+        .page {
+            display: none;
+            padding: 40px;
+            text-align: center;
+        }
+
+        .page.active {
+            display: block;
+        }
+    </style>
 </head>
 <body>
-    <h1>Hello, world!</h1>
-    <p>Welcome to my brand new website hosted on GitHub Pages.</p>
+
+    <div class="logo">Gojo</div>
+
+    <div class="navbar">
+        <div class="tab active" onclick="openPage('main', this)">Main</div>
+        <div class="tab" onclick="openPage('test', this)">Test</div>
+    </div>
+
+<div id="main" class="page active">
+    <h1>Gojo</h1>
+    <p> M1s - yes</p>
+</div>
+
+    <div id="test" class="page">
+        <h1>Test Page</h1>
+        <p>This is the test tab.</p>
+    </div>
+
+    <script>
+        function openPage(pageId, element) {
+            // Hide all pages
+            document.querySelectorAll(".page").forEach(page => {
+                page.classList.remove("active");
+            });
+
+            // Remove active tab
+            document.querySelectorAll(".tab").forEach(tab => {
+                tab.classList.remove("active");
+            });
+
+            // Show selected page
+            document.getElementById(pageId).classList.add("active");
+
+            // Highlight selected tab
+            element.classList.add("active");
+        }
+    </script>
+
 </body>
 </html>
